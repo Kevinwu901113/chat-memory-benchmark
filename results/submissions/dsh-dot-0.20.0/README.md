@@ -6,7 +6,7 @@
 
 | 判分口径 | 通过 / 已判题数 | 通过率 | 未答 |
 | --- | ---: | ---: | ---: |
-| Codex 初判（`grading/judge-prompt.md`） | **654 / 709** | 92.24% | 5 |
+| Codex 初判（gpt-6.1-sol，reasoning effort: medium；`grading/judge-prompt.md`） | **654 / 709** | 92.24% | 5 |
 
 714 题中 709 题有回答并全部判分；5 题因 DeepSeek 接口故障未产生回答（见下文），未计入已判题数，也未当作判错。本记录未做人工抽查。
 
@@ -102,7 +102,7 @@ DeepSeek 用量（token），按 `deepseek-flash` 公开单价折算（缓存命
 
 ## 判分
 
-- 判分者：Codex（作者本地运行；模型版本未记录），按本仓库 `grading/judge-prompt.md` 逐题判断，得到 `reviews.jsonl`。
+- 判分者：Codex（作者本地运行；`gpt-6.1-sol`，reasoning effort: medium，取自判分会话日志开头的记录，日志未给出更细的模型快照编号），按本仓库 `grading/judge-prompt.md` 逐题判断，得到 `reviews.jsonl`。
 - 汇总：本仓库 `grading/grade.py prepare` / `score`，哈希校验通过；用本仓库当前 `main`（`b121cf8`）重新生成 `judgments.jsonl` 与 `summary.json`，与提交的文件逐字节一致。
 
 ## 文件
